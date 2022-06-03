@@ -27,12 +27,15 @@ class Dessert:
         return False
         
     def is_delicious(self):
+        if hasattr(self, 'flavor'):
+            if self.flavor == 'black licorice':
+                return False
         return True
         
 class JellyBean(Dessert):
     
-    def __init__(self, name, calories, flavor = ""):
-        Dessert.__init__(self, name, calories)
+    def __init__(self,flavor = ""):
+        super().__init__()
         self.__flavor = flavor
         
     @property
@@ -42,8 +45,3 @@ class JellyBean(Dessert):
     @flavor.setter
     def flavor(self,flavor):
         self.__flavor = flavor
-        
-    def is_delicious(self):
-        if self.flavor == 'black licorice':
-            return False
-        return Dessert.is_delicious(self)

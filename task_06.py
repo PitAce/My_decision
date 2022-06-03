@@ -11,15 +11,15 @@ def rps_game_winner(game_m):
             game_move += i[1]
 
         if len(game_move) > 2:
-            raise WrongNumberOfPlayersError
+            raise WrongNumberOfPlayersError('WrongNumberOfPlayersError')
         elif game_move in win1:
             return(' '.join(game_m[0]))
         elif game_move in win2:
             return(' '.join(game_m[1]))
         else:
-            raise NoSuchStrategyError
+            raise NoSuchStrategyError('NoSuchStrategyError')
 
-    except WrongNumberOfPlayersError:
-        return('WrongNumberOfPlayersError')
-    except NoSuchStrategyError:
-        return('NoSuchStrategyError')
+    except WrongNumberOfPlayersError as err:
+        return err
+    except NoSuchStrategyError as err:
+        return err
